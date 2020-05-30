@@ -3,9 +3,7 @@
 ## Upcoming version
 
 ### New
-
-### Improved
-
+* Add .count() methods
 
 
 ## Version 0.0.1
