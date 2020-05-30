@@ -154,7 +154,7 @@ class ByteBuffer : ArrayList<Byte> {
     /**
      * Remove the first X number of bytes from the buffer
      */
-    fun removeFirst(amount: Int): ByteBuffer {
+    fun removeFirst(amount: Int = 1): ByteBuffer {
         return getRange(0, amount).also {
             this.removeRange(0, amount)
         }
@@ -163,7 +163,7 @@ class ByteBuffer : ArrayList<Byte> {
     /**
      * Remove the last X number of bytes from the buffer
      */
-    fun removeLast(amount: Int): ByteBuffer {
+    fun removeLast(amount: Int = 1): ByteBuffer {
         val last = this.size
         val first = last - amount
 
