@@ -121,6 +121,23 @@ class ByteBuffer : ArrayList<Byte> {
     }
 
     /**
+     * Count how many times the input exists in the buffer
+     */
+    fun count(input: Byte): Int {
+        return this.stream()
+                .filter { b -> b == input }
+                .count()
+                .toInt()
+    }
+
+    /**
+     * Count how many times the input exists in the buffer
+     */
+    fun count(input: Int): Int {
+        return count(input.toByte())
+    }
+
+    /**
      * Get a certain range from the buffer
      */
     fun getRange(first: Int, last: Int): ByteBuffer {
