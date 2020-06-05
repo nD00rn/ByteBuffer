@@ -172,6 +172,10 @@ class ByteBuffer : ArrayList<Byte> {
         }
     }
 
+    fun toHexDecString(): String {
+        return toHexString("  ") + '\n' + toDecString()
+    }
+
     fun toDecString(): String {
         return toFormattedString(format = "%03d");
     }
