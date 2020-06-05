@@ -173,7 +173,7 @@ class ByteBuffer : ArrayList<Byte> {
     }
 
     fun toDecString(): String {
-        return toFormattedString(format = "%03D");
+        return toFormattedString(format = "%03d");
     }
 
     /**
