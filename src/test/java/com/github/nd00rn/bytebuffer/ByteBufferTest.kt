@@ -41,5 +41,6 @@ class ByteBufferTest {
 
         assert("01 02 03 04 05" == hexOutput)
         assert("001 002 003 004 005" == decOutput)
+        assert("01  02  03  04  05\n001 002 003 004 005" == hexDecOutput)
     }
 }
