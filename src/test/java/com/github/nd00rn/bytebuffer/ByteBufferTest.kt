@@ -24,4 +24,26 @@ class ByteBufferTest {
         assert(b4.size == 1)
         assert(b4[0] == 0x01.toByte())
     }
+
+    @Test
+    fun toStringTest() {
+        val buffer = ByteBuffer().apply {
+            add(0x01)
+            add(0x02)
+            add(0x03)
+            add(0x04)
+            add(0x05)
+        }
+
+        val hexOutput = buffer.toHexString()
+        val decOutput = buffer.toDecString()
+        val hexDecOutput = buffer.toHexDecString()
+
+        println(hexOutput)
+        println(decOutput)
+        println(hexDecOutput)
+
+        assert("01 02 03 04 05" == hexOutput)
+        assert("001 002 003 004 005" == decOutput)
+    }
 }
