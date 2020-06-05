@@ -39,10 +39,6 @@ class ByteBufferTest {
         val decOutput = buffer.toDecString()
         val hexDecOutput = buffer.toHexDecString()
 
-        println(hexOutput)
-        println(decOutput)
-        println(hexDecOutput)
-
         assert("01 02 03 04 05" == hexOutput)
         assert("001 002 003 004 005" == decOutput)
     }
