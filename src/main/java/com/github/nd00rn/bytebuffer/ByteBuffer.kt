@@ -172,26 +172,42 @@ class ByteBuffer : ArrayList<Byte> {
         }
     }
 
-    fun toHexDecString(): String {
-        return toHexString("  ") + '\n' + toDecString()
-    }
-
+    /*
+     * Prints the content of the buffer as a decimal string
+     */
     fun toDecString(): String {
-        return toFormattedString(format = "%03d");
+        return toFormattedString(joiner = " ", format = "%03d");
     }
 
     /**
      * Print the content of the buffer as a hexadecimal string
      */
     fun toHexString(): String {
-        return toFormattedString()
+        return toFormattedString(joiner = " ", format = "%02X")
     }
 
-    /**
-     * Print the content of the buffer as a hexadecimal string
+    /*
+     * Print the content of the buffer as both a hexadecimal and decimal string
      */
-    fun toHexString(joiner: String): String {
-        return toFormattedString(joiner = joiner)
+    fun toHexDecString(): String {
+        return toFormattedStrings(
+                separator = "\n",
+                formats = arrayOf(
+                        Pair("%02X", "  "),
+                        Pair("%03d", " ")
+                ))
+    }
+
+    /*
+     * Print the content of the buffer with the following formats
+     */
+    fun toFormattedStrings(separator: String = "\n", formats: Array<Pair<String, String>>): String {
+        return formats.joinToString(separator = separator) { f ->
+            toFormattedString(
+                    format = f.first,
+                    joiner = f.second
+            )
+        }
     }
 
     /**
@@ -201,5 +217,12 @@ class ByteBuffer : ArrayList<Byte> {
         return this.stream()
                 .map { String.format(format, it) }
                 .collect(Collectors.joining(joiner))
+    }
+
+    /*
+     * Print the content as a hexadecimal string
+     */
+    override fun toString(): String {
+        return toHexString()
     }
 }
